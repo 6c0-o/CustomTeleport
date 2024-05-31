@@ -1,0 +1,14 @@
+waitingTime: 5
+prefix: "&l[&4Custom&cTeleport&f]&f"
+spawn:
+  world:
+    cooldownBeforeTp: 5
+    x: 200.5
+    y: 71
+    z: 41.5
+  tEst:
+    tpToWorld: "world"
+    cooldownBeforeTp: 3
+    x: 211
+    y: 71
+    z: 41

@@ -1,0 +1,18 @@
+# Gradle
+/.gradle/
+/build/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Eclipse
+/.settings
+/.classpath
+/.project
+
+# Visual Studio Code
+/.vscode/
+
+# Build
+/target/

@@ -1,0 +1,10 @@
+name: CustomTeleport
+version: '${project.version}'
+main: fr.sixczero.customteleport.CustomTeleport
+api-version: '1.16'
+commands:
+  spawn:
+    description: "A spawn command"
+  setspawn:
+    description: "Set the spawn of a world"
+    usage: "/setspawn <SpawnWorld> <TpToWorld> <x> <y> <z> [paw] [pitch]"
