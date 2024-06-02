@@ -1,6 +1,7 @@
 package fr.sixczero.customteleport.managers;
 
 import fr.sixczero.customteleport.CustomTeleport;
+import fr.sixczero.customteleport.utils.MessageUtil;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -27,18 +28,16 @@ public class TeleportManager {
             public void run() {
                 if(!(playersWaiting.contains(player.getUniqueId()))){
                     cancel();
-                    plugin.getLogger().warning("CANCEL FR");
                     return;
                 }
                 switch (c[0]){
                     case 0:
                         playersWaiting.remove(player.getUniqueId());
                         player.teleport(new Location(world, x, y, z, yaw, pitch));
-                        player.sendMessage("Teleported");
                         cancel();
                         break;
                     default:
-                        player.sendMessage("Teleporte in " + c[0]);
+                        MessageUtil.sendMessage(player, "&eTeleported in &6" + c[0]);
                         break;
                 }
                 c[0]--;

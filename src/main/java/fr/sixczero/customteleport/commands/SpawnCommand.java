@@ -1,6 +1,7 @@
 package fr.sixczero.customteleport.commands;
 
 import fr.sixczero.customteleport.CustomTeleport;
+import fr.sixczero.customteleport.utils.MessageUtil;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -30,26 +31,37 @@ public class SpawnCommand implements CommandExecutor, TabCompleter {
 
         Player player = (Player) sender;
         if (plugin.getTeleportManager().isWaiting(player)) {
-            player.sendMessage("You have already in a teleporation execution");
+            MessageUtil.sendMessage(player, "&cYou are already teleporting.");
             return true;
         }
 
         ConfigurationSection spawnSection = plugin.getConfig().getConfigurationSection("spawn");
 
         if (!(spawnSection != null && spawnSection.contains(player.getWorld().getName()))) {
-            player.sendMessage("This world have no config for this command");
+            MessageUtil.sendMessage(player, "&cAn error occured, check server console/log for more informations.");
+            plugin.getLogger().severe(player.getWorld().getName() + " don't have spawn configuration.");
             return true;
         }
 
         ConfigurationSection worldSection = spawnSection.getConfigurationSection(player.getWorld().getName());
 
-        World givenWorld = plugin.getServer().getWorld(worldSection.getString("tpToWorld", player.getWorld().getName()));
-        if (givenWorld == null) {
-            player.sendMessage("Please check 'tpToWorld' str for world " + player.getWorld().getName() + "  maybe not a good world name");
+        boolean isDisable = worldSection.getBoolean("disable", false);
+
+        if (isDisable){
+            MessageUtil.sendMessage(player, "&cThis command is disable on this world.");
             return true;
         }
-        if (worldSection.isSet("x") && worldSection.isSet("y") && worldSection.isSet("z")) {
-            player.sendMessage("Please check 'tpToWorld' str for world " + player.getWorld().getName() + "  maybe not a good world name");
+
+        World givenWorld = plugin.getServer().getWorld(worldSection.getString("tpToWorld", player.getWorld().getName()));
+        if (givenWorld == null) {
+            MessageUtil.sendMessage(player, "&cAn error occured, check server console/log for more informations.");
+            plugin.getLogger().severe(player.getWorld().getName() + " have maybe an wrong tpToWorld value [SPAWN]");
+            return true;
+        }
+        if (!(worldSection.isSet("x")) && !(worldSection.isSet("y")) && !(worldSection.isSet("z"))) {
+            MessageUtil.sendMessage(player, "&cAn error occured, check server console/log for more informations.");
+            plugin.getLogger().severe(player.getWorld().getName() + " don't have x or y or z value [SPAWN]");
+            return true;
         }
 
         plugin.getTeleportManager().teleport(player, givenWorld, worldSection.getInt("cooldownBeforeTp", 0), (float) worldSection.getDouble("x"), (float) worldSection.getDouble("y"), (float) worldSection.getDouble("z"), (float) worldSection.getDouble("yaw", 0.0), (float) worldSection.getDouble("pitch", 0.0));

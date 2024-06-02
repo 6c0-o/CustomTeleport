@@ -5,6 +5,8 @@ api-version: '1.16'
 commands:
   spawn:
     description: "A spawn command"
-  setspawn:
-    description: "Set the spawn of a world"
-    usage: "/setspawn <SpawnWorld> <TpToWorld> <x> <y> <z> [paw] [pitch]"
+  hub:
+    description: "A hub command"
+  ctsetspawn:
+      description: "Set the spawn of a world"
+      usage: "/ctsetspawn <world> <TpToWorld> <x> <y> <z> [yaw] [pitch]"

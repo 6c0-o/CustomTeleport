@@ -2,6 +2,7 @@ waitingTime: 5
 prefix: "&l[&4Custom&cTeleport&f]&f"
 spawn:
   world:
+    disable: true
     cooldownBeforeTp: 5
     x: 200.5
     y: 71

@@ -1,6 +1,7 @@
 package fr.sixczero.customteleport.listeners;
 
 import fr.sixczero.customteleport.CustomTeleport;
+import fr.sixczero.customteleport.utils.MessageUtil;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,7 +19,7 @@ public class PlayersMoveListener implements Listener {
     public void onPlayerMove(PlayerMoveEvent e){
         if (isMove(e))  return;
         if (plugin.getTeleportManager().isWaiting(e.getPlayer())){
-            e.getPlayer().sendMessage("Canceled");
+            MessageUtil.sendMessage(e.getPlayer(), "&cTeleportion canceled.");
             plugin.getTeleportManager().cancelTeleport(e.getPlayer());
         }
     }
