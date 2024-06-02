@@ -1,4 +1,4 @@
-A noob plugin to set spawn/hub according to the world (Just to get back into the java)
+A noob plugin to set spawn/hub according to the world (Just to get back into java)
 
 ## Commands
 - `spawn` - "A spawn command"
