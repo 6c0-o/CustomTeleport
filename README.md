@@ -1,5 +1,15 @@
 A noob plugin to set spawn/hub according to the world (Just to get back into the java)
 
+## Commands
+- `spawn` - "A spawn command"
+- `hub` - "A hub command"
+- `/ctsetspawn <world> <TpToWorld> <x> <y> <z> [yaw] [pitch]` - Set the spawn of a world
+- `/ctsethub <world> <TpToWorld> <x> <y> <z> [yaw] [pitch]` - Set the hub of a world
+- `/ctdisable <type> <world>` - Disable a spawn/hub commands of an world
+- `/ctenable <type> <world>` - Enable a spawn/hub commands of an world
+- `/ctcooldown <type> <world> <cooldown>` - Set cooldown before teleport
+
+
 ## Config Exemple
 ```yml
 prefix: "&l[&4Custom&cTeleport&f]&f"
