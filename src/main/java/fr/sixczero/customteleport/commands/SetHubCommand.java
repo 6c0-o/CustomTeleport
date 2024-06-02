@@ -2,7 +2,6 @@ package fr.sixczero.customteleport.commands;
 
 import fr.sixczero.customteleport.CustomTeleport;
 import fr.sixczero.customteleport.utils.MessageUtil;
-import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,10 +18,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SetSpawnCommand implements CommandExecutor, TabCompleter {
+public class SetHubCommand implements CommandExecutor, TabCompleter {
     private final CustomTeleport plugin;
 
-    public SetSpawnCommand(CustomTeleport plugin) {
+    public SetHubCommand(CustomTeleport plugin) {
         this.plugin = plugin;
     }
 
@@ -31,7 +30,7 @@ public class SetSpawnCommand implements CommandExecutor, TabCompleter {
         Player player = (Player) sender;
 
         if (args.length < 5 || args.length > 7) {
-            MessageUtil.sendMessage(player, "&eUsage: /ctsetspawn <world> <TpToWorld> <x> <y> <z> [yaw] [pitch]");
+            MessageUtil.sendMessage(player, "&eUsage: /ctsethub <world> <TpToWorld> <x> <y> <z> [yaw] [pitch]");
             return true;
         }
 
@@ -84,9 +83,9 @@ public class SetSpawnCommand implements CommandExecutor, TabCompleter {
             pitch = Double.parseDouble(args[6]);
         }
 
-        ConfigurationSection spawnSection = plugin.getConfig().getConfigurationSection("spawn");
+        ConfigurationSection spawnSection = plugin.getConfig().getConfigurationSection("hub");
         if (spawnSection == null) {
-            spawnSection = plugin.getConfig().createSection("spawn");
+            spawnSection = plugin.getConfig().createSection("hub");
         }
 
         ConfigurationSection worldSection = spawnSection.getConfigurationSection(world);
@@ -102,7 +101,7 @@ public class SetSpawnCommand implements CommandExecutor, TabCompleter {
         worldSection.set("pitch", pitch);
 
         plugin.saveConfig();
-        MessageUtil.sendMessage(player, "&eSpawn configuration for " + world + " updated.");
+        MessageUtil.sendMessage(player, "&Hub configuration for " + world + " updated.");
 
         return true;
     }

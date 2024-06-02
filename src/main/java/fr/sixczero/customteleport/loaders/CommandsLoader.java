@@ -1,9 +1,7 @@
 package fr.sixczero.customteleport.loaders;
 
 import fr.sixczero.customteleport.CustomTeleport;
-import fr.sixczero.customteleport.commands.HubCommand;
-import fr.sixczero.customteleport.commands.SetSpawnCommand;
-import fr.sixczero.customteleport.commands.SpawnCommand;
+import fr.sixczero.customteleport.commands.*;
 
 public class CommandsLoader {
     private final CustomTeleport plugin;
@@ -17,9 +15,21 @@ public class CommandsLoader {
         plugin.getCommand("spawn").setTabCompleter(new SpawnCommand(plugin));
 
         plugin.getCommand("hub").setExecutor(new HubCommand(plugin));
-        plugin.getCommand("hub").setTabCompleter(new SpawnCommand(plugin));
+        plugin.getCommand("hub").setTabCompleter(new HubCommand(plugin));
 
-        plugin.getCommand("setspawn").setExecutor((new SetSpawnCommand(plugin)));
-        plugin.getCommand("setspawn").setTabCompleter((new SetSpawnCommand(plugin)));
+        plugin.getCommand("ctsetspawn").setExecutor((new SetSpawnCommand(plugin)));
+        plugin.getCommand("ctsetspawn").setTabCompleter((new SetSpawnCommand(plugin)));
+
+        plugin.getCommand("ctsethub").setExecutor((new HubCommand(plugin)));
+        plugin.getCommand("ctsethub").setTabCompleter((new HubCommand(plugin)));
+
+        plugin.getCommand("ctdisable").setExecutor((new DisableCommand(plugin)));
+        plugin.getCommand("ctdisable").setTabCompleter((new DisableCommand(plugin)));
+
+        plugin.getCommand("ctenable").setExecutor((new EnableCommand(plugin)));
+        plugin.getCommand("ctenable").setTabCompleter((new EnableCommand(plugin)));
+
+        plugin.getCommand("ctcooldown").setExecutor((new CooldownCommand(plugin)));
+        plugin.getCommand("ctcooldown").setTabCompleter((new CooldownCommand(plugin)));
     }
 }

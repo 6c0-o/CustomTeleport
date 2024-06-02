@@ -10,3 +10,15 @@ commands:
   ctsetspawn:
       description: "Set the spawn of a world"
       usage: "/ctsetspawn <world> <TpToWorld> <x> <y> <z> [yaw] [pitch]"
+  ctsethub:
+    description: "Set the hub of a world"
+    usage: "/ctsethub <world> <TpToWorld> <x> <y> <z> [yaw] [pitch]"
+  ctdisable:
+    description: "Disable a spawn/hub commands of an world"
+    usage: "/ctdisable <type> <world>"
+  ctenable:
+    description: "Enable a spawn/hub commands of an world"
+    usage: "/ctenable <type> <world>"
+  ctcooldown:
+    description: "Set cooldown before teleport"
+    usage: "/ctcooldown <type> <world> <cooldown>"
