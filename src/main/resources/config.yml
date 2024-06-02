@@ -1,4 +1,3 @@
-waitingTime: 5
 prefix: "&l[&4Custom&cTeleport&f]&f"
 spawn:
   world:
